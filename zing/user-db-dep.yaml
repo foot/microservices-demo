@@ -1,21 +1,14 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  annotations:
-    flux.weave.works/automated: "true"
-    flux.weave.works/tag.helloworld: glob:master-*
-    flux.weave.works/tag.sidecar: glob:master*1
-  name: helloworld
+  name: userdba
 spec:
   minReadySeconds: 5
   replicas: 2
   template:
-    metadata:
-      labels:
-        name: helloworld
     spec:
       containers:
-      - name: helloworld
+      - name: userdba
         image: quay.io/weaveworks/helloworld:master-07a1b6b
         args:
         - -msg=Ahoy
