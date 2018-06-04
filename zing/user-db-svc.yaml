@@ -1,12 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: user-db
-  labels:
-    name: user-db
-  namespace: default
+  name: helloworld
 spec:
   ports:
     - port: 80
   selector:
-    name: user-db
+    name: helloworld
