@@ -10,6 +10,8 @@ spec:
   replicas: 1
   template:
     metadata:
+      annotations:
+        flux.weave.works/automated: "true"
       labels:
         name: user-db
     spec:
