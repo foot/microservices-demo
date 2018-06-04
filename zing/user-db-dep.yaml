@@ -4,7 +4,7 @@ metadata:
   name: user-db
   labels:
     name: user-db
-  namespace: sock-shop
+  namespace: default
 spec:
   minReadySeconds: 5
   replicas: 2
