@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: user-dba
+  name: userdba
   labels:
-    name: user-dba
+    name: userdba
   namespace: default
 spec:
   minReadySeconds: 5
@@ -11,10 +11,10 @@ spec:
   template:
     metadata:
       labels:
-        name: user-dba
+        name: userdba
     spec:
       containers:
-      - name: user-dba
+      - name: userdba
         image: quay.io/weaveworks/helloworld:master-07a1b6b
         args:
         - -msg=Ahoy
