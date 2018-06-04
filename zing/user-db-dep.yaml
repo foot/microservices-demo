@@ -6,36 +6,23 @@ metadata:
     name: user-db
   namespace: sock-shop
 spec:
-  replicas: 1
+  minReadySeconds: 5
+  replicas: 2
   template:
     metadata:
-      annotations:
-        flux.weave.works/automated: "true"
       labels:
         name: user-db
     spec:
       containers:
       - name: user-db
-        image: weaveworksdemos/user-db:0.3.0
-
+        image: quay.io/weaveworks/helloworld:master-07a1b6b
+        args:
+        - -msg=Ahoy
         ports:
-        - name: mongo
-          containerPort: 27017
-        securityContext:
-          capabilities:
-            drop:
-              - all
-            add:
-              - CHOWN
-              - SETGID
-              - SETUID
-          readOnlyRootFilesystem: true
-        volumeMounts:
-        - mountPath: /tmp
-          name: tmp-volume
-      volumes:
-        - name: tmp-volume
-          emptyDir:
-            medium: Memory
-      nodeSelector:
-        beta.kubernetes.io/os: linux
+        - containerPort: 80
+      - name: sidecar
+        image: quay.io/weaveworks/sidecar:master-a000001
+        args:
+        - -addr=:8080
+        ports:
+        - containerPort: 8080

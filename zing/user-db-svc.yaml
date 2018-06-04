@@ -7,9 +7,6 @@ metadata:
   namespace: sock-shop
 spec:
   ports:
-    # the port that this service should serve on
-  - port: 27017
-    targetPort: 27017
+    - port: 80
   selector:
     name: user-db
-
