@@ -4,7 +4,6 @@ metadata:
   name: userdba
   labels:
     name: userdba
-  namespace: default
 spec:
   ports:
     - port: 80
